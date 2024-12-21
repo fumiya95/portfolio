@@ -7,352 +7,373 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Noto Sans JP", sans-serif;
-  background: #fafafa;
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: "Noto Sans JP", "Roboto", sans-serif;
   color: #333;
+  background-color: #f7f9fc; /* 全体背景をやや明るいグレーに */
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
+/* Aタグのデフォルト装飾を解除 */
 a {
   text-decoration: none;
   color: inherit;
 }
 
+/* 見出し（英字）と日本語のフォントをうまくミックス */
+h1, h2, h3 {
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+}
+
+/* 汎用ボタンスタイル */
 .btn {
   display: inline-block;
   padding: 12px 25px;
-  background: linear-gradient(135deg, #007bff, #0056c1);
+  background-color: #007bff; /* ブルーをアクセントカラーに */
   color: #fff;
   border-radius: 25px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  font-weight: 600;
+}
+.btn:hover {
+  background-color: #0056c1;
+  box-shadow: 0 4px 10px rgba(0, 91, 185, 0.2);
 }
 
-.btn:hover {
-  background: linear-gradient(135deg, #0056c1, #007bff);
-  transform: scale(1.1);
+/* 各セクションに余白 */
+section {
+  padding: 80px 20px;
+}
+section h2 {
+  text-align: center;
+  margin-bottom: 60px;
+  font-size: 2em;
+  position: relative;
+  color: #333;
+}
+section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #007bff;
+  margin: 20px auto 0;
+  border-radius: 3px;
+}
+
+/* =====================
+   Header / Navigation
+===================== */
+.header {
+  width: 100%;
+  background: #fff;
+  color: #333;
+  padding: 15px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header__logo a {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #007bff;
+}
+
+.header__nav ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.header__nav ul li a {
+  padding: 8px;
+  transition: color 0.3s;
+  font-weight: 500;
+}
+.header__nav ul li a:hover {
+  color: #007bff;
+}
+
+/* ハンバーガーメニュー（スマホ用） */
+.hamburger {
+  width: 30px;
+  height: 24px;
+  display: none; /* PC表示では非表示 */
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  position: relative;
+}
+.hamburger span {
+  display: block;
+  height: 3px;
+  background: #333;
+  border-radius: 5px;
+  transition: all 0.3s ease;
 }
 
 /* =====================
    Hero Section
 ===================== */
 .hero {
+  width: 100%;
   height: 100vh;
-  background: linear-gradient(135deg, #78a7d3, #0044cc);
+  background: url("https://images.unsplash.com/photo-1560179707-fbad0b6b9ac5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80")
+    no-repeat center/cover;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: white;
-  position: relative;
-  overflow: hidden;
+  margin-top: 0; 
 }
-
 .hero::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
-  animation: move 8s infinite linear;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
 }
-
-@keyframes move {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
+.hero__content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  max-width: 700px;
+  padding: 0 20px;
 }
-
 .hero__content h1 {
   font-size: 3em;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
   margin-bottom: 20px;
 }
-
 .hero__content p {
   font-size: 1.2em;
   margin-bottom: 30px;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+.hero__btn {
+  background-color: #007bff;
+}
+
+/* =====================
+   About Section
+===================== */
+.about {
+  background: #fff;
+  margin-top: -1px; /* Heroとの境目を隠す */
+}
+.about__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.about__img img {
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.about__text {
+  max-width: 600px;
+  font-size: 1.1em;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* =====================
+   Skills Section
+===================== */
+.skills {
+  background: #f4f5f7;
+}
+.skills__grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr 1fr;
+}
+.skill__item {
+  text-align: left;
+  margin: 0 auto;
+  width: 80%;
+}
+.skill__item h3 {
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 600;
+}
+.skill__bar {
+  background: #ddd;
+  border-radius: 25px;
+  overflow: hidden;
+  height: 30px;
+  margin-bottom: 20px;
+}
+.skill__bar-fill {
+  background: #007bff;
+  color: #fff;
+  height: 100%;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 25px 0 0 25px;
+  transition: width 0.6s ease;
+  font-weight: 600;
 }
 
 /* =====================
    Projects Section
 ===================== */
+.projects {
+  background: #fff;
+}
+.projects__grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  align-items: start;
+}
 .project__card {
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
-  transition: transform 0.3s;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  background: #fff;
 }
-
+.project__card:hover {
+  transform: translateY(-2px);
+}
 .project__card img {
   width: 100%;
-  height: auto;
-  transition: transform 0.3s;
+  display: block;
 }
-
-.project__card:hover img {
-  transform: scale(1.1);
-}
-
 .project__card-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  inset: 0;
+  background: rgba(0,0,0,0.5);
   color: #fff;
   opacity: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   padding: 20px;
-  transition: opacity 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: opacity 0.3s ease;
 }
-
+.project__card-overlay h3 {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
 .project__card:hover .project__card-overlay {
   opacity: 1;
+}
+
+/* =====================
+   Timeline Section
+===================== */
+.timeline {
+  background: #f4f5f7;
+}
+.timeline__container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: grid;
+  gap: 30px;
+}
+.timeline__item {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.timeline__date {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #007bff;
+}
+.timeline__content h3 {
+  margin-bottom: 10px;
+}
+
+/* =====================
+   Contact Section
+===================== */
+/* コメントアウト中 */
+
+/* =====================
+   Footer
+===================== */
+.footer {
+  background: #fff;
+  color: #999;
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #ccc;
+}
+.footer p {
+  margin: 0;
+  font-size: 0.9em;
 }
 
 /* =====================
    メディアクエリ
 ===================== */
 @media (max-width: 768px) {
-  .hero__content h1 {
-    font-size: 2.2em;
+  .header__nav ul {
+    display: none; /* ハンバーガーになるのでNavを非表示にする */
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 20px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
   }
-
+  .header__nav ul li {
+    margin-bottom: 10px;
+  }
+  .hamburger {
+    display: flex; /* スマホのときハンバーガー表示 */
+  }
+  /* Hero文字サイズ調整 */
+  .hero__content h1 {
+    font-size: 2em;
+  }
   .hero__content p {
     font-size: 1em;
   }
-}
-  
-  /* =====================
-     About Section
-  ===================== */
-  .about {
-    background: #fff;
-    text-align: center;
+  /* Skillsを1カラムに */
+  .skills__grid {
+    grid-template-columns: 1fr;
   }
   .about__container {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    gap: 40px;
-    align-items: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .btn {
+    width: 100%;
+  }
+  .hero__content h1 {
+    font-size: 1.8em;
   }
   .about__img img {
-    width: 300px;
-    border-radius: 10px;
-  }
-  .about__text {
-    max-width: 600px;
-    font-size: 1.1em;
-    line-height: 1.7;
-  }
-  
-  /* =====================
-     Skills Section
-  ===================== */
-  .skills {
-    background: #f0f0f0;
-    text-align: center;
-  }
-  .skills__grid {
-    max-width: 900px;
-    margin: 0 auto;
-    display: grid;
-    gap: 30px;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-  }
-  .skill__item {
-    text-align: left;
-    margin: 0 auto;
-    width: 80%;
-  }
-  .skill__item h3 {
-    margin-bottom: 10px;
-  }
-  .skill__bar {
-    background: #ddd;
-    border-radius: 25px;
-    overflow: hidden;
-    height: 30px;
-  }
-  .skill__bar-fill {
-    background: #007bff;
-    color: #fff;
-    height: 100%;
-    line-height: 30px;
-    text-align: center;
-    border-radius: 25px 0 0 25px;
-    transition: width 0.6s ease;
-  }
-  
-  /* =====================
-     Projects Section
-  ===================== */
-  .projects {
-    background: #fff;
-    text-align: center;
-  }
-  .projects__grid {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    align-items: start;
-  }
-  .project__card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-  }
-  .project__card img {
     width: 100%;
-    display: block;
+    max-width: 300px;
   }
-  .project__card-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    color: #fff;
-    opacity: 0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transition: opacity 0.3s ease;
-  }
-  .project__card-overlay h3 {
-    margin-bottom: 10px;
-    font-size: 1.4em;
-  }
-  .project__card:hover .project__card-overlay {
-    opacity: 1;
-  }
-  
-  /* =====================
-     Timeline Section
-  ===================== */
-  .timeline {
-    background: #f0f0f0;
-    text-align: center;
-  }
-  .timeline__container {
-    max-width: 800px;
-    margin: 0 auto;
-    display: grid;
-    gap: 30px;
-  }
-  .timeline__item {
-    background: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: left;
-    position: relative;
-  }
-  .timeline__date {
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #007bff;
-  }
-  .timeline__content h3 {
-    margin-bottom: 10px;
-  }
-  
-  /* =====================
-     Contact Section
-  ===================== */
-  .contact {
-    background: #fff;
-    text-align: center;
-  }
-  .contact__text {
-    margin-bottom: 30px;
-  }
-  .contact__form {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: left;
-  }
-  .form__group {
-    margin-bottom: 20px;
-  }
-  .form__group label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: bold;
-  }
-  .form__group input,
-  .form__group textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  /* =====================
-     Footer
-  ===================== */
-  .footer {
-    background: #78a7d3;
-    color: #aaa;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  /* =====================
-     メディアクエリ
-  ===================== */
-  @media (max-width: 768px) {
-    .header__nav ul {
-      display: none; /* ハンバーガーになるのでNavを非表示にする */
-      flex-direction: column;
-      background: #222;
-      position: absolute;
-      top: 60px;
-      right: 0;
-      padding: 20px;
-    }
-    .header__nav ul li {
-      margin-bottom: 10px;
-    }
-  
-    .hamburger {
-      display: flex; /* スマホのときハンバーガー表示 */
-    }
-    /* Hero文字サイズ調整 */
-    .hero__content h1 {
-      font-size: 2em;
-    }
-    .hero__content p {
-      font-size: 1em;
-    }
-    /* Skillsを1カラムに */
-    .skills__grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .btn {
-      width: 100%;
-    }
-    .about__container {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }
+}
