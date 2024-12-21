@@ -2,131 +2,138 @@
    リセット & 基本設定
 ===================== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  background: #fafafa;
+  color: #333;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #007bff, #0056c1);
+  color: #fff;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #0056c1, #007bff);
+  transform: scale(1.1);
+}
+
+/* =====================
+   Hero Section
+===================== */
+.hero {
+  height: 100vh;
+  background: linear-gradient(135deg, #78a7d3, #0044cc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
+  animation: move 8s infinite linear;
+}
+
+@keyframes move {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
   }
-  
-  body {
-    font-family: "Noto Sans JP", sans-serif;
-    color: #333;
-    background-color: #fafafa;
-    line-height: 1.6;
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
   }
-  
-  /* Aタグのデフォルト装飾を解除 */
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  /* 汎用ボタンスタイル */
-  .btn {
-    display: inline-block;
-    padding: 12px 25px;
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 25px;
-    transition: background-color 0.3s ease;
-    text-align: center;
-  }
-  .btn:hover {
-    background-color: #0056c1;
-  }
-  
-  /* 見やすいように各セクションに少し余白 */
-  section {
-    padding: 60px 20px;
-  }
-  
-  /* =====================
-     Header / Navigation
-  ===================== */
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #78a7d3;
-    color: #fff;
-    padding: 15px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-  }
-  
-  .header__logo a {
-    font-size: 1.5em;
-    font-weight: bold;
-  }
-  
-  .header__nav ul {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .header__nav ul li a {
-    transition: color 0.3s;
-  }
-  .header__nav ul li a:hover {
-    color: #007bff;
-  }
-  
-  /* ハンバーガーメニュー（スマホ用） */
-  .hamburger {
-    width: 30px;
-    height: 24px;
-    display: none; /* PC表示では非表示 */
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
-  }
-  .hamburger span {
-    display: block;
-    height: 3px;
-    background: #fff;
-    border-radius: 5px;
-  }
-  
-  /* =====================
-     Hero Section
-  ===================== */
-  .hero {
-    height: 100vh;
-    background: url("https://via.placeholder.com/1920x1080") no-repeat center/cover;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #fff;
-  }
-  
-  .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(234, 230, 230, 0.5);
-  }
-  
-  .hero__content {
-    position: relative;
-    z-index: 1;
-  }
-  
+}
+
+.hero__content h1 {
+  font-size: 3em;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+}
+
+.hero__content p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* =====================
+   Projects Section
+===================== */
+.project__card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.project__card img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s;
+}
+
+.project__card:hover img {
+  transform: scale(1.1);
+}
+
+.project__card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  transition: opacity 0.3s;
+}
+
+.project__card:hover .project__card-overlay {
+  opacity: 1;
+}
+
+/* =====================
+   メディアクエリ
+===================== */
+@media (max-width: 768px) {
   .hero__content h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
+    font-size: 2.2em;
   }
-  
+
   .hero__content p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
+    font-size: 1em;
   }
-  
-  .hero__btn {
-    background-color: #007bff;
-    border-radius: 25px;
-  }
+}
   
   /* =====================
      About Section
