@@ -10,9 +10,10 @@
 html, body {
   width: 100%;
   height: 100%;
-  font-family: "Noto Sans JP", "Roboto", sans-serif;
-  color: #333;
-  background-color: #f7f9fc; /* 全体背景をやや明るいグレーに */
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+               "Noto Sans JP", Arial, sans-serif;
+  color: #000;
+  background-color: #fff;
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -23,46 +24,35 @@ a {
   color: inherit;
 }
 
-/* 見出し（英字）と日本語のフォントをうまくミックス */
-h1, h2, h3 {
-  font-family: "Roboto", "Noto Sans JP", sans-serif;
-}
-
 /* 汎用ボタンスタイル */
 .btn {
   display: inline-block;
-  padding: 12px 25px;
-  background-color: #007bff; /* ブルーをアクセントカラーに */
+  padding: 10px 20px;
+  border-radius: 24px;
+  background-color: #0071e3; /* Appleのイメージに近いブルー */
   color: #fff;
-  border-radius: 25px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  text-align: center;
   font-weight: 600;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  text-align: center;
+  letter-spacing: 0.5px;
 }
 .btn:hover {
-  background-color: #0056c1;
-  box-shadow: 0 4px 10px rgba(0, 91, 185, 0.2);
+  background-color: #005db5;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 /* 各セクションに余白 */
 section {
   padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 section h2 {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
   font-size: 2em;
-  position: relative;
-  color: #333;
-}
-section h2::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: #007bff;
-  margin: 20px auto 0;
-  border-radius: 3px;
+  font-weight: 700;
 }
 
 /* =====================
@@ -71,37 +61,37 @@ section h2::after {
 .header {
   width: 100%;
   background: #fff;
-  color: #333;
-  padding: 15px 20px;
+  color: #000;
+  padding: 10px 20px;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 999;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .header__logo a {
-  font-size: 1.3em;
+  font-size: 1.4em;
   font-weight: 700;
-  color: #007bff;
+  color: #0071e3;
 }
 
 .header__nav ul {
   display: flex;
-  gap: 30px;
   list-style: none;
+  gap: 30px;
 }
 
 .header__nav ul li a {
   padding: 8px;
-  transition: color 0.3s;
   font-weight: 500;
+  transition: color 0.2s ease;
 }
 .header__nav ul li a:hover {
-  color: #007bff;
+  color: #0071e3;
 }
 
 /* ハンバーガーメニュー（スマホ用） */
@@ -116,9 +106,10 @@ section h2::after {
 }
 .hamburger span {
   display: block;
+  width: 100%;
   height: 3px;
-  background: #333;
-  border-radius: 5px;
+  background: #000;
+  border-radius: 3px;
   transition: all 0.3s ease;
 }
 
@@ -128,50 +119,49 @@ section h2::after {
 .hero {
   width: 100%;
   height: 100vh;
-  background: url("https://images.unsplash.com/photo-1560179707-fbad0b6b9ac5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80")
+  background: url("https://images.unsplash.com/photo-1496154704336-6f2a2fa56971?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80")
     no-repeat center/cover;
   position: relative;
+  margin-top: 60px; /* ヘッダー分のマージン */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-top: 0; 
 }
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.5);
+  /* Appleっぽい明るいオーバーレイ */
 }
 .hero__content {
   position: relative;
   z-index: 1;
-  color: #fff;
   max-width: 700px;
-  padding: 0 20px;
+  padding: 20px;
+  color: #000;
 }
 .hero__content h1 {
-  font-size: 3em;
+  font-size: 2.8em;
   margin-bottom: 20px;
+  font-weight: 700;
 }
 .hero__content p {
   font-size: 1.2em;
   margin-bottom: 30px;
 }
 .hero__btn {
-  background-color: #007bff;
+  border-radius: 24px;
 }
 
 /* =====================
    About Section
 ===================== */
 .about {
-  background: #fff;
-  margin-top: -1px; /* Heroとの境目を隠す */
+  background: #f9f9f9;
 }
 .about__container {
-  max-width: 1100px;
-  margin: 0 auto;
   display: flex;
   gap: 40px;
   align-items: center;
@@ -181,47 +171,45 @@ section h2::after {
 .about__img img {
   width: 300px;
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 .about__text {
   max-width: 600px;
   font-size: 1.1em;
   line-height: 1.7;
-  color: #555;
+  color: #333;
 }
 
 /* =====================
    Skills Section
 ===================== */
 .skills {
-  background: #f4f5f7;
+  background: #fff;
 }
 .skills__grid {
-  max-width: 900px;
-  margin: 0 auto;
   display: grid;
   gap: 30px;
   grid-template-columns: 1fr 1fr;
+  align-items: center;
 }
 .skill__item {
-  text-align: left;
   margin: 0 auto;
   width: 80%;
 }
 .skill__item h3 {
-  margin-bottom: 8px;
-  color: #333;
+  margin-bottom: 10px;
   font-weight: 600;
+  color: #333;
 }
 .skill__bar {
-  background: #ddd;
+  background: #e1e1e1;
   border-radius: 25px;
   overflow: hidden;
   height: 30px;
   margin-bottom: 20px;
 }
 .skill__bar-fill {
-  background: #007bff;
+  background-color: #0071e3;
   color: #fff;
   height: 100%;
   line-height: 30px;
@@ -235,11 +223,9 @@ section h2::after {
    Projects Section
 ===================== */
 .projects {
-  background: #fff;
+  background: #f9f9f9;
 }
 .projects__grid {
-  max-width: 1100px;
-  margin: 0 auto;
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -249,7 +235,7 @@ section h2::after {
   position: relative;
   overflow: hidden;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
   background: #fff;
 }
@@ -263,7 +249,7 @@ section h2::after {
 .project__card-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.6);
   color: #fff;
   opacity: 0;
   padding: 20px;
@@ -275,6 +261,7 @@ section h2::after {
 .project__card-overlay h3 {
   margin-bottom: 10px;
   font-size: 1.2em;
+  font-weight: 600;
 }
 .project__card:hover .project__card-overlay {
   opacity: 1;
@@ -284,28 +271,27 @@ section h2::after {
    Timeline Section
 ===================== */
 .timeline {
-  background: #f4f5f7;
+  background: #fff;
 }
 .timeline__container {
-  max-width: 800px;
-  margin: 0 auto;
   display: grid;
   gap: 30px;
 }
 .timeline__item {
-  background: #fff;
+  background: #f9f9f9;
   border-radius: 10px;
   padding: 20px;
   text-align: left;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 .timeline__date {
   font-weight: bold;
   margin-bottom: 10px;
-  color: #007bff;
+  color: #0071e3;
 }
 .timeline__content h3 {
   margin-bottom: 10px;
+  font-weight: 600;
 }
 
 /* =====================
@@ -318,10 +304,10 @@ section h2::after {
 ===================== */
 .footer {
   background: #fff;
-  color: #999;
+  color: #666;
   text-align: center;
   padding: 20px;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #ddd;
 }
 .footer p {
   margin: 0;
@@ -329,7 +315,7 @@ section h2::after {
 }
 
 /* =====================
-   メディアクエリ
+   レスポンシブ
 ===================== */
 @media (max-width: 768px) {
   .header__nav ul {
@@ -364,7 +350,11 @@ section h2::after {
     flex-direction: column;
     gap: 20px;
   }
+  .hero {
+    margin-top: 50px;
+  }
 }
+
 @media (max-width: 480px) {
   .btn {
     width: 100%;
