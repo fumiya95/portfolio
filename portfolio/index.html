@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ポートフォリオ | Your Name</title>
 
-  <!-- Google Fonts: Noto Sans JP -->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <!-- Google Fonts: セリフ体 + サンセリフ体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link 
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" 
+    href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" 
     rel="stylesheet"
   >
 
@@ -23,9 +23,21 @@
        Header & Navigation
   ===================== -->
   <header class="header">
+    <!-- ちょっとしたロゴ（SVGを使用した例） -->
     <div class="header__logo">
-      <a href="#hero">Nemoto Fumiya</a>
+      <a href="#hero">
+        <!-- シンプルなアイコン例 -->
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF7F50" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+          <path d="M2 17l10 5 10-5"></path>
+          <path d="M2 12l10 5 10-5"></path>
+        </svg>
+        <!-- テキストロゴ -->
+        <span class="brand-name">Nemoto Fumiya</span>
+      </a>
     </div>
+
     <nav class="header__nav">
       <ul>
         <li><a href="#about">About Me</a></li>
@@ -35,6 +47,7 @@
         <!-- <li><a href="#contact">Contact</a></li> -->
       </ul>
     </nav>
+
     <!-- ハンバーガーメニュー（スマホ用） -->
     <div class="hamburger" id="hamburger">
       <span></span>
@@ -47,6 +60,7 @@
        Hero Section
   ===================== -->
   <section class="hero" id="hero">
+    <div class="hero__overlay"></div>
     <div class="hero__content">
       <h1>Welcome to My Portfolio</h1>
       <p>エンジニア志望</p>
@@ -67,7 +81,8 @@
       <div class="about__text">
         <p>
           KADOKAWAドワンゴ情報工科学院に入学。現在は2年生<br>
-          主にpython,javaを学んでいる。学んだことを活かしてDX化して、問題解決できないかと思い、Connpassにて水泳×DXコミュニティイベントを開く。
+          主にpython,javaを学んでいる。学んだことを活かしてDX化して、問題解決できないかと思い、
+          Connpassにて水泳×DXコミュニティイベントを開く。
         </p>
       </div>
     </div>
@@ -78,6 +93,84 @@
   ===================== -->
   <section class="skills" id="skills">
     <h2>Skills</h2>
+
+    <!-- 円形ゲージ風にオリジナル要素を追加してレイアウト変化 -->
+    <div class="skills__cards">
+      <div class="skill__circle">
+        <svg viewBox="0 0 36 36" class="circular-chart">
+          <path class="circle-bg"
+                d="M18 2.0845
+                   a 15.9155 15.9155 0 0 1 0 31.831
+                   a 15.9155 15.9155 0 0 1 0 -31.831"
+          />
+          <path class="circle"
+                stroke-dasharray="70, 100"
+                d="M18 2.0845
+                   a 15.9155 15.9155 0 0 1 0 31.831
+                   a 15.9155 15.9155 0 0 1 0 -31.831"
+          />
+          <text x="18" y="20.35" class="percentage">HTML/CSS</text>
+        </svg>
+        <p class="skill-percentage">70%</p>
+      </div>
+
+      <div class="skill__circle">
+        <svg viewBox="0 0 36 36" class="circular-chart">
+          <path class="circle-bg"
+                d="M18 2.0845
+                   a 15.9155 15.9155 0 0 1 0 31.831
+                   a 15.9155 15.9155 0 0 1 0 -31.831"
+          />
+          <path class="circle"
+                stroke-dasharray="40, 100"
+                d="M18 2.0845
+                   a 15.9155 15.9155 0 0 1 0 31.831
+                   a 15.9155 15.9155 0 0 1 0 -31.831"
+          />
+          <text x="18" y="20.35" class="percentage">C#</text>
+        </svg>
+        <p class="skill-percentage">40%</p>
+      </div>
+
+      <div class="skill__circle">
+        <svg viewBox="0 0 36 36" class="circular-chart">
+          <path class="circle-bg"
+                d="M18 2.0845
+                   a 15.9155 15.9155 0 0 1 0 31.831
+                   a 15.9155 15.9155 0 0 1 0 -31.831"
+          />
+          <path class="circle"
+                stroke-dasharray="80, 100"
+                d="M18 2.0845
+                   a 15.9155 15.9155 0 0 1 0 31.831
+                   a 15.9155 15.9155 0 0 1 0 -31.831"
+          />
+          <text x="18" y="20.35" class="percentage">Python</text>
+        </svg>
+        <p class="skill-percentage">80%</p>
+      </div>
+
+      <div class="skill__circle">
+        <svg viewBox="0 0 36 36" class="circular-chart">
+          <path class="circle-bg"
+                d="M18 2.0845
+                   a 15.9155 15.9155 0 0 1 0 31.831
+                   a 15.9155 15.9155 0 0 1 0 -31.831"
+          />
+          <path class="circle"
+                stroke-dasharray="65, 100"
+                d="M18 2.0845
+                   a 15.9155 15.9155 0 0 1 0 31.831
+                   a 15.9155 15.9155 0 0 1 0 -31.831"
+          />
+          <text x="18" y="20.35" class="percentage">Java</text>
+        </svg>
+        <p class="skill-percentage">65%</p>
+      </div>
+    </div>
+
+    <!-- 従来の棒グラフ表示も残したい場合は下記を活かして下さい -->
+    <!--
     <div class="skills__grid">
       <div class="skill__item">
         <h3>HTML & CSS</h3>
@@ -85,25 +178,9 @@
           <div class="skill__bar-fill" style="width: 70%;">70%</div>
         </div>
       </div>
-      <div class="skill__item">
-        <h3>C#</h3>
-        <div class="skill__bar">
-          <div class="skill__bar-fill" style="width: 40%;">40%</div>
-        </div>
-      </div>
-      <div class="skill__item">
-        <h3>Python</h3>
-        <div class="skill__bar">
-          <div class="skill__bar-fill" style="width: 80%;">80%</div>
-        </div>
-      </div>
-      <div class="skill__item">
-        <h3>Java</h3>
-        <div class="skill__bar">
-          <div class="skill__bar-fill" style="width: 65%;">65%</div>
-        </div>
-      </div>
+      ...
     </div>
+    -->
   </section>
 
   <!-- ====================
@@ -142,17 +219,14 @@
           </p>
         </div>
       </div>
-      <!-- Project Card 4
-      <div class="project__card">
+      <!-- Project Card 4 -->
+      <!-- <div class="project__card">
         <img src="https://via.placeholder.com/600x400" alt="プロジェクト画像">
         <div class="project__card-overlay">
           <h3>Project Title 4</h3>
-          <p>
-            ここにプロジェクトの簡単な説明を記入。サービスの特徴や課題解決ポイントを記載。
-          </p>
+          <p>...</p>
         </div>
-      </div>
-      -->
+      </div> -->
     </div>
   </section>
 
@@ -200,23 +274,7 @@
   ===================== -->
   <!--
   <section class="contact" id="contact">
-    <h2>Contact</h2>
-    <p class="contact__text">お仕事のご依頼やご質問などお気軽にご連絡ください。</p>
-    <form class="contact__form">
-      <div class="form__group">
-        <label for="name">お名前</label>
-        <input type="text" id="name" placeholder="山田太郎" required>
-      </div>
-      <div class="form__group">
-        <label for="email">メールアドレス</label>
-        <input type="email" id="email" placeholder="example@gmail.com" required>
-      </div>
-      <div class="form__group">
-        <label for="message">メッセージ</label>
-        <textarea id="message" rows="5" placeholder="お問い合わせ内容を入力してください" required></textarea>
-      </div>
-      <button type="submit" class="btn">送信</button>
-    </form>
+    ...
   </section>
   -->
 
