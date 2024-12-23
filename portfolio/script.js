@@ -5,7 +5,7 @@ const hamburger = document.getElementById("hamburger");
 const navUl = document.querySelector(".header__nav ul");
 
 hamburger.addEventListener("click", () => {
-  navUl.style.display = (navUl.style.display === "flex") ? "none" : "flex";
+  navUl.style.display = navUl.style.display === "flex" ? "none" : "flex";
 });
 
 /***********************************************
@@ -17,19 +17,17 @@ document.querySelectorAll(".nav-link").forEach(link => {
     const targetId = link.getAttribute("href");
     const targetSection = document.querySelector(targetId);
     if (targetSection) {
-      // スムーススクロール
       window.scrollTo({
-        top: targetSection.offsetTop - 50, // ヘッダー分少し上
+        top: targetSection.offsetTop - 50,
         behavior: "smooth"
       });
-      // メニューを閉じる（スマホ時のみ）
-      navUl.style.display = "none";
+      navUl.style.display = "none"; // スマホメニューを閉じる
     }
   });
 });
 
 /***********************************************
- * IntersectionObserverを使ったフェードイン
+ * IntersectionObserverでフェードイン
  ***********************************************/
 const fadeElems = document.querySelectorAll(".fade-up");
 const fadeOptions = {
@@ -51,25 +49,40 @@ fadeElems.forEach(elem => {
 });
 
 /***********************************************
- * スキル円チャート: IntersectionObserverで
- * 画面内に入ったらアニメーション開始
+ * ドーナツグラフのアニメーション
+ * 画面に入ったら stroke-dasharray を設定
  ***********************************************/
-const circleElems = document.querySelectorAll(".circle-observe");
+const donutSegments = document.querySelectorAll(".donut-segment");
 
-const circleObserver = new IntersectionObserver((entries, observer) => {
+/*
+  スキル割合:
+    - HTML/CSS: 25%
+    - C#: 10%
+    - Python: 40%
+    - Java: 25%
+  それぞれ stroke-dasharray="0,100" から [25,100], [10,100], [40,100], [25,100] にアニメさせる
+*/
+
+const donutObserver = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      const circleWrap = entry.target;
-      const percentage = circleWrap.getAttribute("data-percentage");
-      const circlePath = circleWrap.querySelector(".circle");
-      // stroke-dasharrayをアニメーション
-      circlePath.style.strokeDasharray = `${percentage}, 100`;
-      // 一度アニメが完了したら再監視は不要
-      observer.unobserve(circleWrap);
+      // 画面内に入ったらスキル割合を適用
+      // donut-segment の class 名からどの割合か判断して stroke-dasharray を変える
+      if (entry.target.classList.contains("donut-html")) {
+        entry.target.setAttribute("stroke-dasharray", "25 100");
+      } else if (entry.target.classList.contains("donut-csharp")) {
+        entry.target.setAttribute("stroke-dasharray", "10 100");
+      } else if (entry.target.classList.contains("donut-python")) {
+        entry.target.setAttribute("stroke-dasharray", "40 100");
+      } else if (entry.target.classList.contains("donut-java")) {
+        entry.target.setAttribute("stroke-dasharray", "25 100");
+      }
+      // 一度アニメ完了したら監視を外す
+      observer.unobserve(entry.target);
     }
   });
 }, { threshold: 0.5 });
 
-circleElems.forEach(circle => {
-  circleObserver.observe(circle);
+donutSegments.forEach(segment => {
+  donutObserver.observe(segment);
 });

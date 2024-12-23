@@ -95,55 +95,55 @@
     <!-- ドーナツチャート全体を囲むコンテナ -->
     <div class="donut-container">
       <svg class="donut-chart" viewBox="0 0 36 36">
-        <!-- 背景の円 -->
+        <!-- 背景の円（薄いグレー） -->
         <circle class="donut-background" cx="18" cy="18" r="15.9155" fill="none"></circle>
 
-        <!-- 4つのArc(スキル)を重ねて合計100%にする -->
-        <!-- Arc1: HTML/CSS 25% -->
+        <!-- 4つのArc(スキル)を重ね、合計が100%になるようにする -->
+        <!-- Arc1: HTML/CSS (25%) -->
         <circle class="donut-segment donut-html" 
                 cx="18" cy="18" r="15.9155" fill="none"
-                stroke-dasharray="0 100"  <!-- 初期値は0にしておき、アニメで動かす -->
-                stroke-dashoffset="25"   <!-- Arcが開始する場所 -->
+                stroke-dasharray="0 100"   <!-- 初期値0 -->
+                stroke-dashoffset="25"    <!-- 開始位置 -->
                 transform="rotate(-90 18 18)"></circle>
         
-        <!-- Arc2: C# 10% -->
+        <!-- Arc2: C# (10%) -->
         <circle class="donut-segment donut-csharp" 
                 cx="18" cy="18" r="15.9155" fill="none"
                 stroke-dasharray="0 100"
-                stroke-dashoffset="15"   <!-- 前の25%を差し引いた値(=25-10=15) -->
+                stroke-dashoffset="15"    <!-- 25 - 10 = 15 -->
                 transform="rotate(-90 18 18)"></circle>
 
-        <!-- Arc3: Python 40% -->
+        <!-- Arc3: Python (40%) -->
         <circle class="donut-segment donut-python" 
                 cx="18" cy="18" r="15.9155" fill="none"
                 stroke-dasharray="0 100"
-                stroke-dashoffset="-25"  <!-- 前の15%から更に40%を差し引いた値(=15-40=-25) -->
+                stroke-dashoffset="-25"   <!-- 15 - 40 = -25 -->
                 transform="rotate(-90 18 18)"></circle>
 
-        <!-- Arc4: Java 25% -->
+        <!-- Arc4: Java (25%) -->
         <circle class="donut-segment donut-java"
                 cx="18" cy="18" r="15.9155" fill="none"
                 stroke-dasharray="0 100"
-                stroke-dashoffset="-50"  <!-- -25からさらに25を差し引いた値(=-25-25=-50) -->
+                stroke-dashoffset="-50"   <!-- -25 - 25 = -50 -->
                 transform="rotate(-90 18 18)"></circle>
       </svg>
 
-      <!-- 凡例（スキル一覧 + 数値） -->
+      <!-- 凡例（スキル名 + 割合） -->
       <div class="donut-legend">
         <div class="legend-item">
-          <span class="legend-color" style="background-color: #FF7F50;"></span>
+          <span class="legend-color legend-html"></span>
           HTML/CSS (25%)
         </div>
         <div class="legend-item">
-          <span class="legend-color" style="background-color: #FED700;"></span>
+          <span class="legend-color legend-csharp"></span>
           C# (10%)
         </div>
         <div class="legend-item">
-          <span class="legend-color" style="background-color: #6FCF97;"></span>
+          <span class="legend-color legend-python"></span>
           Python (40%)
         </div>
         <div class="legend-item">
-          <span class="legend-color" style="background-color: #F2994A;"></span>
+          <span class="legend-color legend-java"></span>
           Java (25%)
         </div>
       </div>
@@ -235,7 +235,7 @@
     <p>&copy;nemoto fumiya</p>
   </footer>
 
-  <!-- JavaScriptファイル -->
+  <!-- JSファイル -->
   <script src="script.js"></script>
 </body>
 </html>
