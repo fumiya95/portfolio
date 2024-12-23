@@ -6,28 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ポートフォリオ | Your Name</title>
 
-  <!-- Google Fonts: セリフ体 + サンセリフ体 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Google Fonts: Merriweather + Noto Sans JP -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link 
-    href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" 
+    href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap"
     rel="stylesheet"
   >
 
-  <!-- CSSファイル -->
+  <!-- CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-  <!-- ====================
-       Header & Navigation
-  ===================== -->
+  <!-- =====================
+       Header & Nav
+  ====================== -->
   <header class="header">
     <div class="header__logo">
       <a href="#hero">
-        <!-- シンプルなロゴアイコン -->
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF7F50" stroke-width="2"
-             stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;">
+        <!-- ロゴ例（SVG） -->
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF7F50" stroke-width="2" 
+             stroke-linecap="round" stroke-linejoin="round"
+             style="vertical-align: middle; margin-right: 6px;">
           <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
           <path d="M2 17l10 5 10-5"></path>
           <path d="M2 12l10 5 10-5"></path>
@@ -35,7 +36,6 @@
         <span class="brand-name">Nemoto Fumiya</span>
       </a>
     </div>
-
     <nav class="header__nav">
       <ul>
         <li><a href="#about" class="nav-link">About Me</a></li>
@@ -45,18 +45,14 @@
         <!-- <li><a href="#contact">Contact</a></li> -->
       </ul>
     </nav>
-
-    <!-- ハンバーガーメニュー（スマホ用） -->
     <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </div>
   </header>
 
-  <!-- ====================
+  <!-- =====================
        Hero Section
-  ===================== -->
+  ====================== -->
   <section class="hero" id="hero">
     <div class="hero__overlay"></div>
     <div class="hero__content fade-up">
@@ -66,14 +62,13 @@
     </div>
   </section>
 
-  <!-- ====================
+  <!-- =====================
        About Section
-  ===================== -->
+  ====================== -->
   <section class="about fade-up" id="about">
     <h2>About Me</h2>
     <div class="about__container">
       <div class="about__img">
-        <!-- プロフィール画像 -->
         <img src="./image/IMG_2654.jpg" alt="プロフィール画像">
       </div>
       <div class="about__text">
@@ -86,79 +81,47 @@
     </div>
   </section>
 
-  <!-- ====================
-       Skills Section (Donut Chart)
-  ===================== -->
+  <!-- =====================
+       Skills Section (Stacked Bar)
+  ====================== -->
   <section class="skills fade-up" id="skills">
     <h2>Skills</h2>
-    
-    <!-- ドーナツチャート全体を囲むコンテナ -->
-    <div class="donut-container">
-      <svg class="donut-chart" viewBox="0 0 36 36">
-        <!-- 背景の円（薄いグレー） -->
-        <circle class="donut-background" cx="18" cy="18" r="15.9155" fill="none"></circle>
 
-        <!-- 4つのArc(スキル)を重ね、合計が100%になるようにする -->
-        <!-- Arc1: HTML/CSS (25%) -->
-        <circle class="donut-segment donut-html" 
-                cx="18" cy="18" r="15.9155" fill="none"
-                stroke-dasharray="0 100"   <!-- 初期値0 -->
-                stroke-dashoffset="25"    <!-- 開始位置 -->
-                transform="rotate(-90 18 18)"></circle>
-        
-        <!-- Arc2: C# (10%) -->
-        <circle class="donut-segment donut-csharp" 
-                cx="18" cy="18" r="15.9155" fill="none"
-                stroke-dasharray="0 100"
-                stroke-dashoffset="15"    <!-- 25 - 10 = 15 -->
-                transform="rotate(-90 18 18)"></circle>
+    <div class="stacked-bar-container">
+      <!-- 合計100%の横棒を4分割してアニメーション -->
+      <div class="stacked-bar" id="stackedBar">
+        <div class="bar-segment segment-html" data-width="25"></div>   <!-- HTML/CSS 25% -->
+        <div class="bar-segment segment-csharp" data-width="10"></div> <!-- C# 10% -->
+        <div class="bar-segment segment-python" data-width="40"></div> <!-- Python 40% -->
+        <div class="bar-segment segment-java" data-width="25"></div>   <!-- Java 25% -->
+      </div>
 
-        <!-- Arc3: Python (40%) -->
-        <circle class="donut-segment donut-python" 
-                cx="18" cy="18" r="15.9155" fill="none"
-                stroke-dasharray="0 100"
-                stroke-dashoffset="-25"   <!-- 15 - 40 = -25 -->
-                transform="rotate(-90 18 18)"></circle>
-
-        <!-- Arc4: Java (25%) -->
-        <circle class="donut-segment donut-java"
-                cx="18" cy="18" r="15.9155" fill="none"
-                stroke-dasharray="0 100"
-                stroke-dashoffset="-50"   <!-- -25 - 25 = -50 -->
-                transform="rotate(-90 18 18)"></circle>
-      </svg>
-
-      <!-- 凡例（スキル名 + 割合） -->
-      <div class="donut-legend">
+     
+      <div class="stacked-bar-legend">
         <div class="legend-item">
-          <span class="legend-color legend-html"></span>
-          HTML/CSS (25%)
+          <span class="legend-color legend-html"></span>HTML/CSS (25%)
         </div>
         <div class="legend-item">
-          <span class="legend-color legend-csharp"></span>
-          C# (10%)
+          <span class="legend-color legend-csharp"></span>C# (10%)
         </div>
         <div class="legend-item">
-          <span class="legend-color legend-python"></span>
-          Python (40%)
+          <span class="legend-color legend-python"></span>Python (40%)
         </div>
         <div class="legend-item">
-          <span class="legend-color legend-java"></span>
-          Java (25%)
+          <span class="legend-color legend-java"></span>Java (25%)
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ====================
-       Projects Section
-  ===================== -->
+  <!-- =====================
+       Projects
+  ====================== -->
   <section class="projects fade-up" id="projects">
     <h2>Projects</h2>
     <div class="projects__grid">
-      <!-- Project Card 1 -->
       <div class="project__card">
-        <img src="https://via.placeholder.com/600x400" alt="プロジェクト画像">
+        <img src="https://via.placeholder.com/600x400" alt="Project Image">
         <div class="project__card-overlay">
           <h3>Project Title 1</h3>
           <p>
@@ -166,36 +129,33 @@
           </p>
         </div>
       </div>
-      <!-- Project Card 2 -->
       <div class="project__card">
-        <img src="https://via.placeholder.com/600x400" alt="プロジェクト画像">
+        <img src="https://via.placeholder.com/600x400" alt="Project Image">
         <div class="project__card-overlay">
           <h3>Project Title 2</h3>
           <p>
-            ここにプロジェクトの簡単な説明を記入。GitHubリンクを貼ると良いでしょう。
+            GitHubリンク
           </p>
         </div>
       </div>
-      <!-- Project Card 3 -->
       <div class="project__card">
-        <img src="https://via.placeholder.com/600x400" alt="プロジェクト画像">
+        <img src="https://via.placeholder.com/600x400" alt="Project Image">
         <div class="project__card-overlay">
           <h3>Project Title 3</h3>
           <p>
-            ここにプロジェクトの簡単な説明を記入。チーム制作の場合は役割や担当を強調。
+            プロジェクトの簡単な説明
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ====================
-       Timeline Section
-  ===================== -->
+  <!-- =====================
+       Timeline
+  ====================== -->
   <section class="timeline fade-up" id="timeline">
     <h2>Timeline</h2>
     <div class="timeline__container">
-      <!-- Timeline 1 -->
       <div class="timeline__item">
         <div class="timeline__date">2023.04</div>
         <div class="timeline__content">
@@ -205,7 +165,6 @@
           </p>
         </div>
       </div>
-      <!-- Timeline 2 -->
       <div class="timeline__item">
         <div class="timeline__date">2024.9</div>
         <div class="timeline__content">
@@ -215,7 +174,6 @@
           </p>
         </div>
       </div>
-      <!-- Timeline 3 -->
       <div class="timeline__item">
         <div class="timeline__date">2024</div>
         <div class="timeline__content">
@@ -228,14 +186,14 @@
     </div>
   </section>
 
-  <!-- ====================
+  <!-- =====================
        Footer
-  ===================== -->
+  ====================== -->
   <footer class="footer">
     <p>&copy;nemoto fumiya</p>
   </footer>
 
-  <!-- JSファイル -->
+  <!-- JS -->
   <script src="script.js"></script>
 </body>
 </html>

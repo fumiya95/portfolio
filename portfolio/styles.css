@@ -2,7 +2,7 @@
    リセット & 基本設定
 ===================== */
 * {
-  margin: 0;
+  margin: 0; 
   padding: 0;
   box-sizing: border-box;
 }
@@ -11,24 +11,25 @@ html, body {
   width: 100%;
   height: 100%;
   font-family: "Noto Sans JP", sans-serif;
-  line-height: 1.6;
   background: #fff;
   color: #333;
+  line-height: 1.6;
   overflow-x: hidden;
 }
 
-/* 見出しはセリフ体（Merriweather） */
 h1, h2, h3 {
   font-family: "Merriweather", "Noto Sans JP", serif;
 }
 
-/* Aタグの装飾を解除 */
+/* Aタグ装飾解除 */
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* 汎用ボタン */
+/* =====================
+   汎用ボタン
+===================== */
 .btn {
   display: inline-block;
   padding: 10px 20px;
@@ -41,17 +42,16 @@ a {
 }
 .btn:hover {
   background-color: #ff5c28;
-  box-shadow: 0 6px 15px rgba(255, 127, 80, 0.2);
   transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 127, 80, 0.2);
 }
 
 /* =====================
-   Header / Navigation
+   Header
 ===================== */
 .header {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   height: 60px;
   background: #fff;
@@ -63,9 +63,20 @@ a {
   padding: 0 20px;
 }
 
-.header__logo a {
+.header__nav ul {
   display: flex;
-  align-items: center;
+  gap: 30px;
+  list-style: none;
+}
+
+.header__nav ul li a {
+  font-weight: 500;
+  padding: 8px;
+  transition: color 0.2s ease;
+}
+
+.header__nav ul li a:hover {
+  color: #FF7F50;
 }
 
 .brand-name {
@@ -74,25 +85,11 @@ a {
   color: #FF7F50;
 }
 
-.header__nav ul {
-  display: flex;
-  gap: 30px;
-  list-style: none;
-}
-.header__nav ul li a {
-  font-weight: 500;
-  transition: color 0.2s ease;
-  padding: 8px;
-}
-.header__nav ul li a:hover {
-  color: #FF7F50;
-}
-
-/* ハンバーガーメニュー（スマホ用） */
+/* ハンバーガー */
 .hamburger {
   width: 30px;
   height: 24px;
-  display: none; /* PCでは非表示 */
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
@@ -102,7 +99,6 @@ a {
   height: 3px;
   background: #333;
   border-radius: 3px;
-  transition: all 0.3s ease;
 }
 
 /* =====================
@@ -123,7 +119,7 @@ a {
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255,255,255,0.3);
   z-index: 0;
 }
 .hero__content {
@@ -142,7 +138,7 @@ a {
 }
 
 /* =====================
-   Fade-upアニメ用クラス
+   Fade-upアニメ
 ===================== */
 .fade-up {
   opacity: 0;
@@ -197,7 +193,7 @@ section {
 }
 
 /* =====================
-   Skills (Donut Chart)
+   Skills (Stacked Bar)
 ===================== */
 .skills {
   background: #fff;
@@ -210,59 +206,50 @@ section {
   font-size: 2em;
 }
 
-/* ドーナツチャートコンテナ */
-.donut-container {
+.stacked-bar-container {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: 30px;
   padding-bottom: 40px;
 }
 
-.donut-chart {
-  width: 200px;
-  height: 200px;
-  display: block;
+/* 横方向の棒本体 */
+.stacked-bar {
+  width: 500px;
+  height: 30px;
+  background: #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
 }
 
-/* 背景となる円 */
-.donut-background {
-  stroke: #eee;
-  stroke-width: 3.8;
-  r: 15.9155;
-  cx: 18;
-  cy: 18;
+/* セグメント4つを並べる: widthは後からJSで設定 */
+.bar-segment {
+  height: 100%;
+  transition: width 1s ease;
+  flex-shrink: 0;
 }
 
-/* 各スキルの円弧 */
-.donut-segment {
-  stroke-width: 3.8;
-  fill: none;
-  stroke-linecap: round;
-  /* 初期状態は dasharray="0 100" → JavaScript側でアニメ */
-  transition: stroke-dasharray 1s ease;
+.segment-html {
+  background: #4DA1FF;  /* 青 */
 }
-
-/* セグメントごとの色: */
-.donut-html {
-  stroke: #FF7F50; /* コーラル */
+.segment-csharp {
+  background: #FFC107;  /* 黄 */
 }
-.donut-csharp {
-  stroke: #FED700; /* イエロー */
+.segment-python {
+  background: #48C774;  /* 緑 */
 }
-.donut-python {
-  stroke: #6FCF97; /* グリーン */
-}
-.donut-java {
-  stroke: #F2994A; /* オレンジ */
+.segment-java {
+  background: #F66D44;  /* 橙レッド */
 }
 
 /* 凡例 */
-.donut-legend {
+.stacked-bar-legend {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 .legend-item {
   display: flex;
@@ -271,11 +258,15 @@ section {
 }
 .legend-color {
   display: inline-block;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   margin-right: 8px;
   border-radius: 4px;
 }
+.legend-html { background-color: #4DA1FF; }
+.legend-csharp { background-color: #FFC107; }
+.legend-python { background-color: #48C774; }
+.legend-java { background-color: #F66D44; }
 
 /* =====================
    Projects
@@ -294,7 +285,7 @@ section {
 .projects__grid {
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
   padding: 0 20px;
 }
 .project__card {
@@ -396,8 +387,8 @@ section {
     top: 60px;
     right: 20px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
   .header__nav ul li {
     margin-bottom: 10px;
@@ -418,8 +409,8 @@ section {
     flex-direction: column;
     gap: 20px;
   }
-  .donut-container {
-    flex-direction: column;
+  .stacked-bar {
+    width: 300px;
   }
 }
 
