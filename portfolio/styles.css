@@ -17,25 +17,23 @@ html, body {
   overflow-x: hidden;
 }
 
-/* 見出しはセリフ体（Merriweather）を使って少しクラシックかつ高級感を演出 */
+/* 見出しはセリフ体（Merriweather） */
 h1, h2, h3 {
   font-family: "Merriweather", "Noto Sans JP", serif;
 }
 
-/* Aタグのデフォルト装飾を解除 */
+/* Aタグの装飾を解除 */
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* =====================
-   汎用ボタンスタイル
-===================== */
+/* 汎用ボタン */
 .btn {
   display: inline-block;
   padding: 10px 20px;
   border-radius: 24px;
-  background-color: #FF7F50; /* ブランドカラー(コーラル) */
+  background-color: #FF7F50;
   color: #fff;
   font-weight: 600;
   transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
@@ -94,7 +92,7 @@ a {
 .hamburger {
   width: 30px;
   height: 24px;
-  display: none; /* PC表示では非表示 */
+  display: none; /* PCでは非表示 */
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
@@ -108,12 +106,12 @@ a {
 }
 
 /* =====================
-   Hero Section
+   Hero
 ===================== */
 .hero {
   width: 100%;
   height: 100vh;
-  margin-top: 60px; /* ヘッダーの高さ分だけ余白を確保 */
+  margin-top: 60px;
   position: relative;
   display: flex;
   align-items: center;
@@ -125,7 +123,7 @@ a {
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.3); /* 明るめのオーバーレイ */
+  background: rgba(255, 255, 255, 0.3);
   z-index: 0;
 }
 .hero__content {
@@ -144,7 +142,7 @@ a {
 }
 
 /* =====================
-   Animationクラス（フェードアップ）
+   Fade-upアニメ用クラス
 ===================== */
 .fade-up {
   opacity: 0;
@@ -157,7 +155,7 @@ a {
 }
 
 /* =====================
-   About Section
+   About
 ===================== */
 section {
   padding: 80px 20px;
@@ -180,7 +178,7 @@ section {
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 0 20px 40px; /* 下に余白 */
+  padding: 0 20px 40px;
 }
 .about__img img {
   width: 300px;
@@ -199,7 +197,7 @@ section {
 }
 
 /* =====================
-   Skills Section
+   Skills (Donut Chart)
 ===================== */
 .skills {
   background: #fff;
@@ -211,48 +209,76 @@ section {
   margin-bottom: 50px;
   font-size: 2em;
 }
-.skills__cards {
+
+/* ドーナツチャートコンテナ */
+.donut-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  align-items: center;
   justify-content: center;
-  padding: 0 20px 40px;
+  gap: 40px;
+  padding-bottom: 40px;
 }
-.skill__circle {
-  width: 150px;
-  text-align: center;
-  position: relative;
-}
-.circular-chart {
-  max-width: 100px;
-  margin: 0 auto;
+
+.donut-chart {
+  width: 200px;
+  height: 200px;
   display: block;
 }
-.circle-bg {
-  fill: none;
+
+/* 背景となる円 */
+.donut-background {
   stroke: #eee;
   stroke-width: 3.8;
+  r: 15.9155;
+  cx: 18;
+  cy: 18;
 }
-.circle {
+
+/* 各スキルの円弧 */
+.donut-segment {
+  stroke-width: 3.8;
   fill: none;
-  stroke-width: 2.8;
-  stroke: #FF7F50; /* 円チャートにもブランドカラー */
   stroke-linecap: round;
-  /* stroke-dasharray は script.js で制御 */
+  /* 初期状態は dasharray="0 100" → JavaScript側でアニメ */
+  transition: stroke-dasharray 1s ease;
 }
-.percentage {
-  fill: #666;
-  font-size: 6px;
-  text-anchor: middle;
+
+/* セグメントごとの色: */
+.donut-html {
+  stroke: #FF7F50; /* コーラル */
 }
-.skill-percentage {
-  margin-top: 10px;
-  font-weight: 700;
-  color: #333;
+.donut-csharp {
+  stroke: #FED700; /* イエロー */
+}
+.donut-python {
+  stroke: #6FCF97; /* グリーン */
+}
+.donut-java {
+  stroke: #F2994A; /* オレンジ */
+}
+
+/* 凡例 */
+.donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+.legend-color {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  border-radius: 4px;
 }
 
 /* =====================
-   Projects Section
+   Projects
 ===================== */
 .projects {
   background: #f9f9f9;
@@ -307,7 +333,7 @@ section {
 }
 
 /* =====================
-   Timeline Section
+   Timeline
 ===================== */
 .timeline {
   background: #fff;
@@ -363,7 +389,7 @@ section {
 ===================== */
 @media (max-width: 768px) {
   .header__nav ul {
-    display: none; 
+    display: none;
     flex-direction: column;
     background: #fff;
     position: absolute;
@@ -377,7 +403,7 @@ section {
     margin-bottom: 10px;
   }
   .hamburger {
-    display: flex; 
+    display: flex;
   }
   .hero {
     margin-top: 50px;
@@ -388,13 +414,12 @@ section {
   .hero__content p {
     font-size: 1em;
   }
-  .skills__cards {
-    flex-direction: column;
-    align-items: center;
-  }
   .about__container {
     flex-direction: column;
     gap: 20px;
+  }
+  .donut-container {
+    flex-direction: column;
   }
 }
 
