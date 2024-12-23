@@ -13,7 +13,7 @@
     rel="stylesheet"
   >
 
-  <!-- CSSファイルを読み込み -->
+  <!-- CSSファイル -->
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -25,6 +25,7 @@
   <header class="header">
     <div class="header__logo">
       <a href="#hero">
+        <!-- シンプルなロゴアイコン -->
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF7F50" stroke-width="2"
              stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;">
           <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
@@ -72,7 +73,7 @@
     <h2>About Me</h2>
     <div class="about__container">
       <div class="about__img">
-        <!-- プロフィール画像を置く -->
+        <!-- プロフィール画像 -->
         <img src="./image/IMG_2654.jpg" alt="プロフィール画像">
       </div>
       <div class="about__text">
@@ -86,82 +87,65 @@
   </section>
 
   <!-- ====================
-       Skills Section
+       Skills Section (Donut Chart)
   ===================== -->
   <section class="skills fade-up" id="skills">
     <h2>Skills</h2>
+    
+    <!-- ドーナツチャート全体を囲むコンテナ -->
+    <div class="donut-container">
+      <svg class="donut-chart" viewBox="0 0 36 36">
+        <!-- 背景の円 -->
+        <circle class="donut-background" cx="18" cy="18" r="15.9155" fill="none"></circle>
 
-    <div class="skills__cards">
-      <div class="skill__circle circle-observe" data-percentage="70">
-        <svg viewBox="0 0 36 36" class="circular-chart">
-          <path class="circle-bg"
-                d="M18 2.0845
-                   a 15.9155 15.9155 0 0 1 0 31.831
-                   a 15.9155 15.9155 0 0 1 0 -31.831"
-          />
-          <path class="circle"
-                stroke-dasharray="0, 100"
-                d="M18 2.0845
-                   a 15.9155 15.9155 0 0 1 0 31.831
-                   a 15.9155 15.9155 0 0 1 0 -31.831"
-          />
-          <text x="18" y="20.35" class="percentage">HTML/CSS</text>
-        </svg>
-        <p class="skill-percentage">70%</p>
-      </div>
+        <!-- 4つのArc(スキル)を重ねて合計100%にする -->
+        <!-- Arc1: HTML/CSS 25% -->
+        <circle class="donut-segment donut-html" 
+                cx="18" cy="18" r="15.9155" fill="none"
+                stroke-dasharray="0 100"  <!-- 初期値は0にしておき、アニメで動かす -->
+                stroke-dashoffset="25"   <!-- Arcが開始する場所 -->
+                transform="rotate(-90 18 18)"></circle>
+        
+        <!-- Arc2: C# 10% -->
+        <circle class="donut-segment donut-csharp" 
+                cx="18" cy="18" r="15.9155" fill="none"
+                stroke-dasharray="0 100"
+                stroke-dashoffset="15"   <!-- 前の25%を差し引いた値(=25-10=15) -->
+                transform="rotate(-90 18 18)"></circle>
 
-      <div class="skill__circle circle-observe" data-percentage="40">
-        <svg viewBox="0 0 36 36" class="circular-chart">
-          <path class="circle-bg"
-                d="M18 2.0845
-                   a 15.9155 15.9155 0 0 1 0 31.831
-                   a 15.9155 15.9155 0 0 1 0 -31.831"
-          />
-          <path class="circle"
-                stroke-dasharray="0, 100"
-                d="M18 2.0845
-                   a 15.9155 15.9155 0 0 1 0 31.831
-                   a 15.9155 15.9155 0 0 1 0 -31.831"
-          />
-          <text x="18" y="20.35" class="percentage">C#</text>
-        </svg>
-        <p class="skill-percentage">40%</p>
-      </div>
+        <!-- Arc3: Python 40% -->
+        <circle class="donut-segment donut-python" 
+                cx="18" cy="18" r="15.9155" fill="none"
+                stroke-dasharray="0 100"
+                stroke-dashoffset="-25"  <!-- 前の15%から更に40%を差し引いた値(=15-40=-25) -->
+                transform="rotate(-90 18 18)"></circle>
 
-      <div class="skill__circle circle-observe" data-percentage="80">
-        <svg viewBox="0 0 36 36" class="circular-chart">
-          <path class="circle-bg"
-                d="M18 2.0845
-                   a 15.9155 15.9155 0 0 1 0 31.831
-                   a 15.9155 15.9155 0 0 1 0 -31.831"
-          />
-          <path class="circle"
-                stroke-dasharray="0, 100"
-                d="M18 2.0845
-                   a 15.9155 15.9155 0 0 1 0 31.831
-                   a 15.9155 15.9155 0 0 1 0 -31.831"
-          />
-          <text x="18" y="20.35" class="percentage">Python</text>
-        </svg>
-        <p class="skill-percentage">80%</p>
-      </div>
+        <!-- Arc4: Java 25% -->
+        <circle class="donut-segment donut-java"
+                cx="18" cy="18" r="15.9155" fill="none"
+                stroke-dasharray="0 100"
+                stroke-dashoffset="-50"  <!-- -25からさらに25を差し引いた値(=-25-25=-50) -->
+                transform="rotate(-90 18 18)"></circle>
+      </svg>
 
-      <div class="skill__circle circle-observe" data-percentage="65">
-        <svg viewBox="0 0 36 36" class="circular-chart">
-          <path class="circle-bg"
-                d="M18 2.0845
-                   a 15.9155 15.9155 0 0 1 0 31.831
-                   a 15.9155 15.9155 0 0 1 0 -31.831"
-          />
-          <path class="circle"
-                stroke-dasharray="0, 100"
-                d="M18 2.0845
-                   a 15.9155 15.9155 0 0 1 0 31.831
-                   a 15.9155 15.9155 0 0 1 0 -31.831"
-          />
-          <text x="18" y="20.35" class="percentage">Java</text>
-        </svg>
-        <p class="skill-percentage">65%</p>
+      <!-- 凡例（スキル一覧 + 数値） -->
+      <div class="donut-legend">
+        <div class="legend-item">
+          <span class="legend-color" style="background-color: #FF7F50;"></span>
+          HTML/CSS (25%)
+        </div>
+        <div class="legend-item">
+          <span class="legend-color" style="background-color: #FED700;"></span>
+          C# (10%)
+        </div>
+        <div class="legend-item">
+          <span class="legend-color" style="background-color: #6FCF97;"></span>
+          Python (40%)
+        </div>
+        <div class="legend-item">
+          <span class="legend-color" style="background-color: #F2994A;"></span>
+          Java (25%)
+        </div>
       </div>
     </div>
   </section>
@@ -251,9 +235,7 @@
     <p>&copy;nemoto fumiya</p>
   </footer>
 
-  <!-- ====================
-       JSファイルを読み込み
-  ===================== -->
+  <!-- JavaScriptファイル -->
   <script src="script.js"></script>
 </body>
 </html>
