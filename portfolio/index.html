@@ -55,7 +55,7 @@
   ====================== -->
   <section class="hero" id="hero">
     <div class="hero__overlay"></div>
-    <div class="hero__content fade-up">
+    <div class="hero__content">
       <h1>Welcome to My Portfolio</h1>
       <p>エンジニア志望</p>
       <a class="btn hero__btn" href="#about">私について</a>
@@ -65,7 +65,7 @@
   <!-- =====================
        About Section
   ====================== -->
-  <section class="about fade-up" id="about">
+  <section class="about" id="about">
     <h2>About Me</h2>
     <div class="about__container">
       <div class="about__img">
@@ -84,19 +84,17 @@
   <!-- =====================
        Skills Section (Stacked Bar)
   ====================== -->
-  <section class="skills fade-up" id="skills">
+  <section class="skills" id="skills">
     <h2>Skills</h2>
 
     <div class="stacked-bar-container">
-      <!-- 合計100%の横棒を4分割してアニメーション -->
-      <div class="stacked-bar" id="stackedBar">
-        <div class="bar-segment segment-html" data-width="25"></div>   <!-- HTML/CSS 25% -->
-        <div class="bar-segment segment-csharp" data-width="10"></div> <!-- C# 10% -->
-        <div class="bar-segment segment-python" data-width="40"></div> <!-- Python 40% -->
-        <div class="bar-segment segment-java" data-width="25"></div>   <!-- Java 25% -->
+      <div class="stacked-bar">
+        <div class="bar-segment segment-html" style="width: 25%"></div>   <!-- HTML/CSS 25% -->
+        <div class="bar-segment segment-csharp" style="width: 10%"></div> <!-- C# 10% -->
+        <div class="bar-segment segment-python" style="width: 40%"></div> <!-- Python 40% -->
+        <div class="bar-segment segment-java" style="width: 25%"></div>   <!-- Java 25% -->
       </div>
-
-     
+      <!-- 凡例 -->
       <div class="stacked-bar-legend">
         <div class="legend-item">
           <span class="legend-color legend-html"></span>HTML/CSS (25%)
@@ -117,7 +115,7 @@
   <!-- =====================
        Projects
   ====================== -->
-  <section class="projects fade-up" id="projects">
+  <section class="projects" id="projects">
     <h2>Projects</h2>
     <div class="projects__grid">
       <div class="project__card">
@@ -134,7 +132,7 @@
         <div class="project__card-overlay">
           <h3>Project Title 2</h3>
           <p>
-            GitHubリンク
+            ここにプロジェクトの簡単な説明を記入。GitHubリンクを貼ると良いでしょう。
           </p>
         </div>
       </div>
@@ -143,7 +141,7 @@
         <div class="project__card-overlay">
           <h3>Project Title 3</h3>
           <p>
-            プロジェクトの簡単な説明
+            ここにプロジェクトの簡単な説明を記入。チーム制作の場合は役割や担当を強調。
           </p>
         </div>
       </div>
@@ -153,7 +151,7 @@
   <!-- =====================
        Timeline
   ====================== -->
-  <section class="timeline fade-up" id="timeline">
+  <section class="timeline" id="timeline">
     <h2>Timeline</h2>
     <div class="timeline__container">
       <div class="timeline__item">
@@ -190,7 +188,7 @@
        Footer
   ====================== -->
   <footer class="footer">
-    <p>&copy;nemoto fumiya</p>
+    <p>&copy; nemoto fumiya</p>
   </footer>
 
   <!-- JS -->
