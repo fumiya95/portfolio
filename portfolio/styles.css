@@ -289,6 +289,7 @@ section {
 .project__card img {
   width: 100%;
   display: block;
+ 
 }
 .project__card-overlay {
   position: absolute;
