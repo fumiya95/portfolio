@@ -269,10 +269,12 @@ section {
   margin-bottom: 50px;
   font-size: 2em;
 }
+/* 修正：カードを中央に配置できるようflexに変更 */
 .projects__grid {
-  display: grid;
+  display: flex;            /* グリッドからフレックスに変更 */
+  justify-content: center;  /* 中央寄せ */
+  align-items: center;
   gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
   padding: 0 20px;
 }
 .project__card {
@@ -282,15 +284,23 @@ section {
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
   background: #fff;
+  /* 必要に応じて余白やサイズ調整を追加 */
+  padding: 10px;
 }
 .project__card:hover {
   transform: translateY(-2px);
 }
-.project__card img {
-  width: 100%;
+/* ▼ GitHub用カードの画像を大きめに表示するクラス */
+.github-image {
+  width: 200px;   /* お好みで調整 */
+  height: auto;
   display: block;
- 
+  margin: 0 auto; /* 画像自体をカード内で中央寄せ */
 }
+
+/* プロジェクトカードのオーバーレイは不要であれば削除OK
+   必要なら下記を残し、.project__card-overlay を修正
+*/
 .project__card-overlay {
   position: absolute;
   inset: 0;
