@@ -24,7 +24,7 @@ FlexboxとGridを駆使したレイアウト設計。レスポンシブ対応を
 
 	
 	
-・　　about ME<br>
+・about ME<br>
 自己紹介と学んできたことを紹介。
 	•Skills<br>
 スキルの割合を視覚化したグラフを掲載。<br>
